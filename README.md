@@ -1,4 +1,6 @@
 # Restoring Binary Division
+#### *Disclaimer: This work is strictly for my personal use. If you are a CMPEN 331 student, you are solely responsible for any kind of plagiarism.*
+
 Implementation of Binary Division using Restoring Algorithm using Xilinx Design Package for FPGAs
 
 ## Project Structure 
