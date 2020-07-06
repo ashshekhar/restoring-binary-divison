@@ -10,9 +10,7 @@
 // Target Devices: 
 // Tool Versions: 
 // Description: 
-// 
 // Dependencies: 
-// 
 // Revision:
 // Revision 0.01 - File Created
 // Additional Comments:
@@ -25,7 +23,7 @@ module testbench();
     // Inputs are set to registers
     reg [31:0] a_tb;
     reg [15:0] b_tb;
-
+    
     reg clk_tb;
     reg rst_tb;
     reg start_tb;
@@ -43,7 +41,6 @@ module testbench();
     
     // Initial case
         initial begin
-        
             clk_tb = 1;
             start_tb = 0;
             rst_tb = 0;
@@ -62,7 +59,6 @@ module testbench();
             #5 a_tb=32'hffff00;
                 b_tb = 4'h4;
             #5 start_tb = 0;
-
         end
         
         // Clock is put inside always block, since always changing
@@ -70,5 +66,4 @@ module testbench();
             #5;
             clk_tb = ~clk_tb;    
         end
-
 endmodule
