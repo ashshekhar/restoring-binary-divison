@@ -1,7 +1,7 @@
 # Restoring Binary Division
 #### *Disclaimer: This work is strictly for my personal use. If you are a CMPEN 331 student, you are solely responsible for any kind of plagiarism.*
 
-Implementation of binary division using restoring algorithm using Xilinx Design Package for FPGAs
+Implementation of binary division using restoring algorithm on Xilinx Design Package for FPGAs
 
 ## Project Structure 
 
