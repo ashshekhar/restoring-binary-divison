@@ -56,7 +56,6 @@ module div(a,b,clk,rst,start,busy,ready,count,q,r);
     output reg busy; // indicates the at the divisor is busy and can't start a new division
     output reg ready; // indicates that the quotient and remainder are available
     
-    
     /////////////////////////////////////// Mux over reg_r ////////////////////////////////////////////////////
     
     // As shown in the schematic diagram, in this mux, we use subtracter[16] to decide whether to restore or not
@@ -67,11 +66,9 @@ module div(a,b,clk,rst,start,busy,ready,count,q,r);
     
     assign mux_r = subtracter[16]? {reg_r[14:0], reg_q[31]}:subtracter[15:0];
     
-
     // Also assigning values to q and r
     assign q = reg_q;
     assign r = reg_r;   
-    
 
    //////////////////////////////////// Subtracter  ////////////////////////////////////////////////////
 
@@ -79,9 +76,7 @@ module div(a,b,clk,rst,start,busy,ready,count,q,r);
     // {[15:0]reg_r, MSB of reg_q} and returns a 17 bit answer where the 17th bit is the sign of the result
     
     assign subtracter = {reg_r, reg_q[31]} - {1'b0, reg_b}; 
-      
-
-
+ 
     // Division Process
     always@(posedge clk or negedge rst) 
     begin
@@ -92,22 +87,21 @@ module div(a,b,clk,rst,start,busy,ready,count,q,r);
         if(!rst) begin
             ready <= 0;
             busy  <= 0;
-          
-          
-            
+      
         // If the process has started already, keep updating the value of reg_q
         end else if(busy) begin
             
             reg_r <= mux_r;
+           
   /////////////////////////////////////// Mux over reg_q //////////////////////////////////////////////////  
           
             // After each iteration, one bit of q is obtained from the signed bit of the subtracter result
             // and written to the LSB of reg_q
             reg_q <= {reg_q[30:0], ~subtracter[16]} ; // Shift the quotient and implement the NOT as shown
 
-  /////////////////////////////////// Finally increase the counter and check for end case//////////////
+  /////////////////////////////////// Finally increase the counter and check for end case//////////////////
             count  <= count + 4'd1; // counter++
-            
+           
             // Since the remainder is max 32 bits, the count will max be 31, i.e 5'h1f
             if(count == 31) begin
                 ready <= 1; // The quotient and remainder are available
@@ -115,11 +109,8 @@ module div(a,b,clk,rst,start,busy,ready,count,q,r);
             end
         end   
             
-            
-            
         // Else, start the division process
         else if(start) begin
-        
             busy <= 1; // Since ALU is now busy
             count <= 0;
             ready <= 0;
@@ -127,13 +118,9 @@ module div(a,b,clk,rst,start,busy,ready,count,q,r);
             // Initialize the registers as per the instructions and waveform
             reg_q <= a; // initially reg_q stores dividend a
             reg_r <= 0;
-            reg_b <= b;
-            
-
+            reg_b <= b;   
         end
-            
      end
-   
 endmodule
 
 
