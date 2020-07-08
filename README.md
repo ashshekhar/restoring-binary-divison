@@ -9,4 +9,4 @@ Implementation of binary division using restoring algorithm on Xilinx Design Pac
 2. `Lab1_Divison.srcs/sources_1/new/sub.v`: Contains the main module 
 
 ## Schematic
-![Schematic]()
+![Schematic](https://github.com/ashshekhar/restoring-binary-divison/blob/master/Schematic%20Diagram.png)
