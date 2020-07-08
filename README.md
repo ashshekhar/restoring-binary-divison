@@ -7,3 +7,6 @@ Implementation of binary division using restoring algorithm on Xilinx Design Pac
 
 1. `Lab1_Divison.srcs/sim_1/new/testbench.v`: Contains the testbench module 
 2. `Lab1_Divison.srcs/sources_1/new/sub.v`: Contains the main module 
+
+## Schematic
+![Schematic]()
